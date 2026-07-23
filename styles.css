@@ -1,0 +1,204 @@
+:root {
+  --bg: #0f1115;
+  --panel: #171a21;
+  --panel-2: #1e222b;
+  --border: #2a2f3a;
+  --text: #e6e8ee;
+  --muted: #9aa3b2;
+  --accent: #5b9cff;
+  --accent-ink: #0b1220;
+  --ok: #3fb950;
+  --error: #ff6b6b;
+  --note: #d9a441;
+  --radius: 12px;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: radial-gradient(1200px 600px at 50% -10%, #1a2030 0%, var(--bg) 60%);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.app {
+  width: 100%;
+  max-width: 620px;
+}
+
+.app-head h1 {
+  margin: 0 0 .35rem;
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  margin: 0 0 1.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.sub strong { color: var(--text); font-weight: 600; }
+
+form {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.field { margin-bottom: 1.1rem; }
+
+label, legend {
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: .4rem;
+}
+
+input {
+  width: 100%;
+  padding: .7rem .8rem;
+  font-size: 1rem;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+input::placeholder { color: #5b6472; }
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(91, 156, 255, .18);
+}
+
+.options {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0;
+}
+
+.option-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+  margin-bottom: .6rem;
+}
+
+.option-row:last-child { margin-bottom: 0; }
+
+.result {
+  margin-top: 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.result-label {
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.result-row {
+  display: flex;
+  gap: .7rem;
+  align-items: stretch;
+  margin-top: .55rem;
+}
+
+#sku-output {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 1.15rem;
+  word-break: break-all;
+  display: flex;
+  align-items: center;
+  padding: .75rem .9rem;
+  background: var(--panel-2);
+  border: 1px dashed var(--border);
+  border-radius: 9px;
+  color: var(--ok);
+  min-height: 3rem;
+}
+
+#sku-output.empty { color: #4a5261; font-family: var(--sans); }
+
+#copy-btn {
+  flex: 0 0 auto;
+  padding: 0 1.2rem;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: filter .15s, transform .05s;
+}
+
+#copy-btn:hover:not(:disabled) { filter: brightness(1.08); }
+#copy-btn:active:not(:disabled) { transform: translateY(1px); }
+#copy-btn:disabled { opacity: .4; cursor: not-allowed; }
+#copy-btn.copied { background: var(--ok); }
+
+.messages { margin-top: .8rem; display: flex; flex-direction: column; gap: .4rem; }
+
+.msg {
+  font-size: .87rem;
+  line-height: 1.4;
+  padding: .5rem .65rem;
+  border-radius: 7px;
+  border: 1px solid transparent;
+}
+
+.msg-error {
+  color: #ffd0d0;
+  background: rgba(255, 107, 107, .1);
+  border-color: rgba(255, 107, 107, .35);
+}
+
+.msg-note {
+  color: #f0d9a8;
+  background: rgba(217, 164, 65, .1);
+  border-color: rgba(217, 164, 65, .3);
+}
+
+.app-foot {
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.app-foot code, .sub code {
+  font-family: var(--mono);
+  font-size: .9em;
+  background: var(--panel-2);
+  padding: .05em .35em;
+  border-radius: 4px;
+}
+
+@media (max-width: 480px) {
+  .option-row { grid-template-columns: 1fr; }
+  .result-row { flex-direction: column; }
+  #copy-btn { padding: .7rem; }
+}

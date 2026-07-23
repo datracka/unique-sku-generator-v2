@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SKU Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-head">
+      <h1>SKU Generator</h1>
+      <p class="sub">Pick <strong>Vendor</strong>, <strong>Type</strong> and up to three
+        <strong>options</strong>. The SKU is generated deterministically — copy it straight from the box.</p>
+    </header>
+
+    <form id="form" autocomplete="off">
+      <div class="field">
+        <label for="vendor">Vendor</label>
+        <input id="vendor" list="vendor-list" placeholder="Start typing a vendor…" />
+        <datalist id="vendor-list"></datalist>
+      </div>
+
+      <div class="field">
+        <label for="type">Type</label>
+        <input id="type" list="type-list" placeholder="Start typing a type…" />
+        <datalist id="type-list"></datalist>
+      </div>
+
+      <fieldset class="options">
+        <legend>Options</legend>
+        <div class="option-row">
+          <input class="option-name" list="option-name-list-1" placeholder="Option 1 name" />
+          <datalist id="option-name-list-1" class="option-name-list"></datalist>
+          <input class="option-value" list="option-value-list-1" placeholder="Option 1 value" />
+          <datalist id="option-value-list-1" class="option-value-list"></datalist>
+        </div>
+        <div class="option-row">
+          <input class="option-name" list="option-name-list-2" placeholder="Option 2 name" />
+          <datalist id="option-name-list-2" class="option-name-list"></datalist>
+          <input class="option-value" list="option-value-list-2" placeholder="Option 2 value" />
+          <datalist id="option-value-list-2" class="option-value-list"></datalist>
+        </div>
+        <div class="option-row">
+          <input class="option-name" list="option-name-list-3" placeholder="Option 3 name" />
+          <datalist id="option-name-list-3" class="option-name-list"></datalist>
+          <input class="option-value" list="option-value-list-3" placeholder="Option 3 value" />
+          <datalist id="option-value-list-3" class="option-value-list"></datalist>
+        </div>
+      </fieldset>
+    </form>
+
+    <section class="result">
+      <span class="result-label">Generated SKU</span>
+      <div class="result-row">
+        <code id="sku-output" class="empty">—</code>
+        <button id="copy-btn" type="button" disabled>Copy</button>
+      </div>
+      <div id="messages" class="messages"></div>
+    </section>
+
+    <footer class="app-foot">
+      <p>Deterministic from <code>Vendor + Type + Options</code> only — no hashes, titles or supplier codes.
+      Cross-catalog uniqueness is <strong>not</strong> checked here (v1).</p>
+    </footer>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
