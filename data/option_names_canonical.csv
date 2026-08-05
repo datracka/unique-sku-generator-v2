@@ -253,3 +253,7 @@ Mounts,MOUNT,MNT,no
 Reticle,RETICLE,RET,no
 Colour,COLOR,CLR,no
 Bundle,BUNDLE,BND,yes
+Thread size,THREAD,THR,no
+Weight,WEIGHT,WGT,no
+GENERATION,GENERATION,GEN,yes
+Universal Scope Holder,HOLDER,HOL,yes
